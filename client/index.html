@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>hi</title>
+  <style>
+    #messages {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+  </head>
+  <body>
+    <div id='messages'>
+    </div>
+    <div>
+      <textarea id='textarea'></textarea>
+      <button id='submitButton'>Submit</button>
+    </div>
+  </body>
+  <script>
+    const socket = new WebSocket(process.env.SERVER_URL)
+
+    const messagesContainer = document.getElementById('messages')
+    const textarea = document.getElementById('textarea')
+    const submitButton = document.getElementById('submitButton')
+
+    const addMessage = (message) => {
+      const node = document.createElement('div')
+      const text = document.createTextNode(message)
+      node.appendChild(text)
+      messagesContainer.appendChild(node)
+    }
+
+    submitButton.addEventListener('click', () => {
+      const message = textarea.value
+      socket.send(message)
+    })
+
+    socket.addEventListener('message', (event) => {
+      addMessage(event.data)
+    })
+
+    socket.addEventListener('close', (event) => {
+      console.warn('The connection has been closed.')
+    })
+  </script>
+</html>
+
