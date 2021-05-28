@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "build": "parcel build ./index.html",
-    "serve": "parcel serve ./index.html",
+    "build": "parcel build index.html",
+    "serve": "parcel serve index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
