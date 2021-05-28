@@ -383,7 +383,7 @@ function hmrAcceptRun(bundle/*: ParcelRequire */ , id/*: string */ ) {
 
 },{}],"vLDcy":[function(require,module,exports) {
 (function() {
-    const e = new WebSocket("ws://localhost:8080"), t = document.getElementById("messages"), n = document.getElementById("textarea");
+    const e = new WebSocket(undefined), t = document.getElementById("messages"), n = document.getElementById("textarea");
     document.getElementById("submitButton").addEventListener("click", ()=>{
         const t1 = n.value;
         e.send(t1);
